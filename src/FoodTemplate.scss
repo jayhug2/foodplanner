@@ -2,12 +2,11 @@
 
 .FoodTemplate{
   @include container(100%, auto, block);
-  max-width:560px;
-  min-width:360px;
+  
   margin: auto;
-  margin-top : 6rem;
   border-radius: 10px;
   overflow: hidden;
+  
   h2{
     text-align: center;
     font-size: 1em;
@@ -23,5 +22,15 @@
   }
   .content{
     background: #fff;
+  }
+  @media screen and (max-width: 560px){
+    max-width:560px;
+    min-width:360px;
+    .appTitle{
+      height: 4em;
+    }
+    h2{
+      font-size: 1.2em;
+    }
   }
 }

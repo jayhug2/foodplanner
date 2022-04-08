@@ -1,7 +1,7 @@
 .FoodItem{
     display: flex;
     align-items: center;
-    padding:1rem;
+    padding:1rem 20em;
     &:nth-child(even){
         background: #f5f6fa;
     }
@@ -41,5 +41,12 @@
 
     & + & {
         border-top: 1px solid #dee2e6;
+    }
+    @media screen and (max-width:1200px){
+        padding: 1rem 15rem;
+    }
+    @media screen and (max-width:860px){
+        height: 5em;
+        padding:1rem;
     }
 }
