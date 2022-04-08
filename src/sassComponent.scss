@@ -1,0 +1,19 @@
+@import "./base.scss";
+body {
+    background-color: whitesmoke;
+}
+
+.loader{
+    @include container(100%, 100vh, flex);
+    @include flex(column, center, center);
+    padding: 0 20px;
+    box-sizing: border-box;
+    h1{
+        font-size:3em;
+    }
+    p{
+        margin: 0;
+        font-size:0.9em;
+        text-align: center;
+    }
+}

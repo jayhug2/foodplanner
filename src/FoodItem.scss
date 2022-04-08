@@ -1,0 +1,45 @@
+.FoodItem{
+    display: flex;
+    align-items: center;
+    padding:1rem;
+    &:nth-child(even){
+        background: #f5f6fa;
+    }
+    .checkbox{
+        display: flex;
+        flex:1;
+        cursor:pointer;
+        align-items: center;
+        svg{
+            font-size: 1.5em;
+        }
+        .text {
+            margin-left: 0.5em;
+            flex: 1;
+        }
+        &.checked{
+            svg{
+                color: #ff6b6b;
+                text-decoration: line-through;
+            }
+        }
+        span{
+            color: cornflowerblue;
+            font-weight: bolder;
+        }
+    }
+    .remove{
+        display: flex;
+        align-items: center;
+        font-size: 1.5em;
+        color:#ff6b6b;
+        cursor: pointer;
+        &:hover{
+            color: #ff8787;
+        }
+    }
+
+    & + & {
+        border-top: 1px solid #dee2e6;
+    }
+}
