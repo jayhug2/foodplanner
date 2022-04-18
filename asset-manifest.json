@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/foodplanner/static/css/main.6f564745.css",
-    "main.js": "/foodplanner/static/js/main.f524b1c5.js",
+    "main.js": "/foodplanner/static/js/main.cf95c073.js",
     "index.html": "/foodplanner/index.html",
     "main.6f564745.css.map": "/foodplanner/static/css/main.6f564745.css.map",
-    "main.f524b1c5.js.map": "/foodplanner/static/js/main.f524b1c5.js.map"
+    "main.cf95c073.js.map": "/foodplanner/static/js/main.cf95c073.js.map"
   },
   "entrypoints": [
     "static/css/main.6f564745.css",
-    "static/js/main.f524b1c5.js"
+    "static/js/main.cf95c073.js"
   ]
 }
