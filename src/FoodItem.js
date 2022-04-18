@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   MdCheckBoxOutlineBlank,
   MdCheckBox,
@@ -6,7 +6,14 @@ import {
 } from 'react-icons/md';
 import './FoodItem.scss';
 
-const FoodItem = ({reArr}) => {
+const FoodItem = ({reArr, onClick, checkComplate}) => {
+
+
+  const removeItems = (e) => {
+    return () => {
+      return onClick(e)
+    }
+  }
   
   return (
     localStorage.length===0 ? (
@@ -21,13 +28,13 @@ const FoodItem = ({reArr}) => {
       </div>) : reArr.map((menu) => 
         (
           <div className="FoodItem" key={menu.meal}>
-          <div className="checkbox">
-            <MdCheckBoxOutlineBlank />
+          <div className={menu.complate? "checkbox checked" : "checkbox"} onClick={() => checkComplate(menu.meal)}>
+            {menu.complate ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}
             <div className="text">
               {`${menu.meal==='0'? '아침' : menu.meal==='1' ? '점심' : menu.meal==='2' ? '저녁' : '디저트'}엔 ${menu.where}에서 ${menu.whatFood} 먹을거야!`}
             </div>
           </div>
-          <div className="remove">
+          <div className="remove" onClick={removeItems(menu.meal)}>
             <MdRemoveCircleOutline />
           </div>
         </div>

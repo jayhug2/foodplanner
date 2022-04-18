@@ -21,19 +21,21 @@ function App() {
   const [where, setWhere] = useState('');
   const [whatFood, setWhatFood] = useState('');
   const [loading, setLoading] = useState(true);
-    
-    
+  const [complate, setComplate] = useState(false);
+  
+  //로컬스토리지에 메뉴 추가 및 인풋 초기화
   const addFoodList = (e) => {
     e.preventDefault();
-    localStorage.setItem(meal,JSON.stringify({ meal, where, whatFood}));
+    localStorage.setItem(meal,JSON.stringify({ meal, where, whatFood, complate}));
     setWhere('');
     setWhatFood('');
   }
+  //키값 변경
   const changeMeal = useCallback(e => {
     setMeal(e.target.value);
   },[])
 
-
+  //로컬스토리지 데이터로 배열생성 및 재정렬
   let foodplan = [];
   if(localStorage.length!==0){
     for(let i=0; i<localStorage.length; i++){
@@ -44,12 +46,33 @@ function App() {
     return Number(a.meal) - Number(b.meal);
   });
 
+  //로컬스토리지에서 데이터 삭제 및 배열에서도 동일한 데이터 삭제.
+  const removeFoodList = (index) => {
+    localStorage.removeItem(index);
+    reArr.splice(index, 1);
+  }
+  const [flist, setFlist] = useState(reArr);
+
+  useEffect(() => {
+    setFlist(reArr);
+  },[reArr]);
+
+  //체크박스 상태변경
+  const checkComplate = (e) => {
+    let currentData = JSON.parse(localStorage.getItem(e));
+    currentData.complate = !currentData.complate;
+    localStorage.setItem(e,JSON.stringify(currentData));
+    
+  }
+
+  
+  //어플리케이션 실행화면 세팅
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
     },3000)
-    
   },[])
+
   return ( loading 
     ? (<div className="loader">
         <Loader>🍤</Loader>
@@ -68,7 +91,11 @@ function App() {
           whatFood={whatFood}
           setWhatFood={setWhatFood}
         />
-        <FoodList reArr={reArr}/>
+        <FoodList 
+          reArr={flist} 
+          onClick={removeFoodList}
+          checkComplate={checkComplate}
+        />
       </FoodTemplate>
     )
   );
