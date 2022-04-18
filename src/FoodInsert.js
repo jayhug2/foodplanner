@@ -1,9 +1,9 @@
 import { MdAdd } from 'react-icons/md';
 import './FoodInsert.scss';
-import React,{ useRef } from 'react';
+import React from 'react';
 
-const FoodInsert = ({changeMeal,addFoodList,meal,setWhere,whatFood,where,setWhatFood}) => {
-  const inputRef = useRef();
+const FoodInsert = ({changeMeal,addFoodList,meal,setWhere,whatFood,where,setWhatFood,inputRef}) => {
+  
     return (
       <form className="FoodInsert" onSubmit={addFoodList}>
         <select onChange={changeMeal} value={meal}>

@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, useRef } from 'react';
 import './sassComponent.scss';
 import styled, {keyframes} from 'styled-components';
 import FoodInsert from './FoodInsert';
@@ -21,14 +21,20 @@ function App() {
   const [where, setWhere] = useState('');
   const [whatFood, setWhatFood] = useState('');
   const [loading, setLoading] = useState(true);
-  const [complate, setComplate] = useState(false);
-  
+  const inputRef = useRef();
+
+  let complate = false;
   //로컬스토리지에 메뉴 추가 및 인풋 초기화
   const addFoodList = (e) => {
     e.preventDefault();
+    if(where==="" && whatFood===""){
+      alert("식사계획을 입력하세요");
+      return false;
+    }
     localStorage.setItem(meal,JSON.stringify({ meal, where, whatFood, complate}));
     setWhere('');
     setWhatFood('');
+    inputRef.current.focus();
   }
   //키값 변경
   const changeMeal = useCallback(e => {
@@ -90,6 +96,7 @@ function App() {
           where={where}
           whatFood={whatFood}
           setWhatFood={setWhatFood}
+          inputRef={inputRef}
         />
         <FoodList 
           reArr={flist} 
