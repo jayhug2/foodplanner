@@ -20,7 +20,7 @@ const FoodItem = ({reArr, onClick, checkComplate}) => {
       <div className="FoodItem">
         <div className="checkbox">
           <MdCheckBoxOutlineBlank />
-          <div className="text">ex ) <span>아침</span>엔 <span>집</span>에서 <span>짜파게티</span> 먹을거야!</div>
+          <div className="text">ex ) <span>디저트</span>는 <span>스타벅스</span>에서 <span>바닐라라떼</span> 먹을거야!</div>
         </div>
         <div className="remove">
           <MdRemoveCircleOutline />
@@ -31,7 +31,7 @@ const FoodItem = ({reArr, onClick, checkComplate}) => {
           <div className={menu.complate? "checkbox checked" : "checkbox"} onClick={() => checkComplate(menu.meal)}>
             {menu.complate ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}
             <div className="text">
-              {`${menu.meal==='0'? '아침' : menu.meal==='1' ? '점심' : menu.meal==='2' ? '저녁' : '디저트'}엔 ${menu.where}에서 ${menu.whatFood} 먹을거야!`}
+              {`${menu.meal==='0'? '아침' : menu.meal==='1' ? '점심' : menu.meal==='2' ? '저녁' : '디저트'}은(는) ${menu.where}에서 ${menu.whatFood} 먹어야지!`}
             </div>
           </div>
           <div className="remove" onClick={removeItems(menu.meal)}>
